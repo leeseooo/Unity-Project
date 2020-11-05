@@ -24,9 +24,5 @@ public class Night : MonoBehaviour
             Debug.Log("늦잠자서 지각엔딩... ㅎㅎ...");
             EndArray.setEndingArray(0,false);
         }
-        if (EndArray.getEndingArray(0))
-        {
-            Debug.Log("오 됐다!@!@!!@!@!@!@");
-        }
     }
 }
