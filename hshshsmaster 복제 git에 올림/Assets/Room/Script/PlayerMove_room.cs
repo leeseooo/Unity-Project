@@ -35,10 +35,11 @@ public class PlayerMove_room : MonoBehaviour
             if (isOnbed)
             {
                 Debug.Log("침대에서 점프횟수: " + (++jumpCheck));
-                if (jumpCheck ==5)
+                if (jumpCheck == 5)
                 {
-                    rigid.AddForce(new Vector2 (3,8), ForceMode2D.Impulse);
+                    rigid.AddForce(new Vector2 (3,15), ForceMode2D.Impulse);
                     manager.talkText.text = "탄력적인 침대는 [눈송]을 천장을 뚫고 날려버렸다~~!";
+                    EndArray.setEndingArray(3, true);
                 }
             }
         }
@@ -125,6 +126,8 @@ public class PlayerMove_room : MonoBehaviour
             {
                 manager.talkText.text = "눈송은 컴퓨터의 유혹에 빠져...학교에 늦어버렸다!!";
                 manager.isAction = false;
+                EndArray.setEndingArray(1, true);
+                
             }
         }
         else if (other.gameObject.name == "chairCollider")

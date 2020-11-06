@@ -29,14 +29,4 @@ public class AlbumCs : MonoBehaviour
             }
         }
     }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }
