@@ -13,6 +13,7 @@ public class PlayerMove_room : MonoBehaviour
     private int jumpCheck;
     private bool isOnbed;
     float timer = 0f;
+    float timer2 = 0f;
     GameObject scanObject;
     public GameManager manager;
     public FadeOut fadeout;
@@ -74,6 +75,8 @@ public class PlayerMove_room : MonoBehaviour
         {
             Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
             RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+            //침대 위에 있는 지 검사.
+            RaycastHit2D bedHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Bed"));
             if (rayHit.collider != null)
             {
                 if (rayHit.distance < 0.6f)
@@ -81,6 +84,13 @@ public class PlayerMove_room : MonoBehaviour
                     anim.SetBool("isJumping", false);
                     anim.SetBool("isSitting", false);
                 }
+                if (bedHit.collider != null)//침대 위에 있음.
+                {
+                    Debug.Log("잠을 자려면 윗방향키를 눌러주세요.");
+                    anim.SetBool("isSleeping", true);
+                }
+                else
+                    anim.SetBool("isSleeping", false);
             }
         }
 
