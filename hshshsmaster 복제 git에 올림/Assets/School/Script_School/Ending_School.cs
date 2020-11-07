@@ -15,7 +15,7 @@ public class Ending_School : MonoBehaviour
     public int restaurant_count=0;
     
     //아이템변수
-    bool item_kickboard, item_cat, item_bateacher, item_elevator;
+    public static bool item_kickboard, item_cat, item_bateacher, item_elevator;
     
     bool item_tag; //현재 태그 상태 체크 = 태그됨 :true, 태그안됨: false
     int random;

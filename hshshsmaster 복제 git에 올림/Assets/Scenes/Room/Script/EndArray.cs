@@ -6,7 +6,7 @@ using UnityEngine;
 public static class EndArray
 {
     public static bool[] EndingArray = new bool[50];
-    
+    public static int roomCnt, subCnt, schoolCnt;
     public static void setEndingArray(int i,bool b)
     {
         EndingArray[i] = b;

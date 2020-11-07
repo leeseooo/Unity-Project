@@ -1,15 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+<<<<<<< Updated upstream
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{72e23edd-6dc3-8851-52e8-8c2f0981f69c}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{f36bd556-ce05-ef52-510f-21063f00038f}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< Updated upstream
 		{72e23edd-6dc3-8851-52e8-8c2f0981f69c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72e23edd-6dc3-8851-52e8-8c2f0981f69c}.Debug|Any CPU.Build.0 = Debug|Any CPU
+=======
+		{f36bd556-ce05-ef52-510f-21063f00038f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f36bd556-ce05-ef52-510f-21063f00038f}.Debug|Any CPU.Build.0 = Debug|Any CPU
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
