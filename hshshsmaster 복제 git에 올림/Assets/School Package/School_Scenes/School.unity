@@ -749,7 +749,7 @@ MonoBehaviour:
   mini_2: {fileID: 1382541510}
   restaurant_count: 0
   Fade: {fileID: 691465276}
-  ChangeImage: {fileID: 0}
+  ChangeImage: {fileID: 1912784325}
 --- !u!114 &49084592
 MonoBehaviour:
   m_ObjectHideFlags: 0
