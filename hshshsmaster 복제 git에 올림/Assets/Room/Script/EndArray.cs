@@ -9,7 +9,7 @@ public static class EndArray
     
     public static void setEndingArray(int i,bool b)
     {
-        EndingArray[i] = true;
+        EndingArray[i] = b;
     }
     public static bool getEndingArray(int i)
     {
