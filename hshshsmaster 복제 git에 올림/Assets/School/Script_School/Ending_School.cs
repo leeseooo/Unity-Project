@@ -532,15 +532,64 @@ public class Ending_School : MonoBehaviour
             cat_tag = false;
         }
 
+        //16. 상자 - 킥보드 발견
+        else if(collision.gameObject.name == "Box_Kickboards"){
+            kickboard = false;
+        }
+
+        //17. 상자 - 고양이 간식 발견
+        else if(collision.gameObject.name == "Box_Cat"){
+            box_cat = false;
+        }
+
+        //고양이 배치
+        else if(collision.gameObject.name == "Cat"){
+            cat_tag = false;
+        }
+
+
         //19. 전자출결 - 교실
         else if(collision.gameObject.name == "Class2"){
             class_2 = false;
+        }
+
+        //22. 상자  - 바선생약
+        else if(collision.gameObject.name == "Box_Bateacher"){
+            bateacher = false;
         }
 
         //26. 버블티 가게 엔딩
         else if(collision.gameObject.name == "Bubbletea"){
             manager.talkText.text = "카페인 안먹으면 분명 강의듣다 졸텐데..";
             bubbletea = false;
+            mini_2.setActive(false);
+        }
+
+        //학교앞음식점
+        if(collision.CompareTag("Restaurant")){
+            if(collision.gameObject.name == "Restaurant1")
+            {
+                restaurant_1 = false;
+               
+            }
+            else if(collision.gameObject.name == "Restaurant2"){
+                restaurant_2 = false;
+                
+                
+            }
+            else if(collision.gameObject.name == "Restaurant3"){
+                restaurant_3 = false;
+                
+            }
+            else if(collision.gameObject.name == "Restaurant4"){
+                restaurant_4 = false;
+                
+            }
+        }
+        //교수와 달리기 엔딩
+        else if(collision.gameObject.name == "Teacher"){
+            minigame_teacher = false;
+            mini_1.setActive(false);
         }
 
         
