@@ -562,7 +562,7 @@ public class Ending_School : MonoBehaviour
         else if(collision.gameObject.name == "Bubbletea"){
             manager.talkText.text = "카페인 안먹으면 분명 강의듣다 졸텐데..";
             bubbletea = false;
-            mini_2.setActive(false);
+            //mini_2.setActive(false);
         }
 
         //학교앞음식점
@@ -589,7 +589,7 @@ public class Ending_School : MonoBehaviour
         //교수와 달리기 엔딩
         else if(collision.gameObject.name == "Teacher"){
             minigame_teacher = false;
-            mini_1.setActive(false);
+            //mini_1.setActive(false);
         }
 
         
