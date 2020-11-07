@@ -40,6 +40,9 @@ public class PlayerMove_room : MonoBehaviour
                 {
                     rigid.AddForce(new Vector2(3, 8), ForceMode2D.Impulse);
                     manager.talkText.text = "탄력적인 침대는 [눈송]을 천장을 뚫고 날려버렸다~~!";
+                    ChangeImage.EndingNumber = 4;
+                    ChangeImage.Change();
+                    EndingScene_room();
                 }
             }
         }
@@ -125,9 +128,9 @@ public class PlayerMove_room : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 manager.talkText.text = "눈송은 컴퓨터의 유혹에 빠져...학교에 늦어버렸다!!";
-                ChangeImage.EndingNumber = 4;
+                ChangeImage.EndingNumber = 1;
                 ChangeImage.Change();
-                EndingScene();
+                EndingScene_room();
             }
         }
         else if (other.gameObject.name == "chairTalk")
@@ -183,6 +186,12 @@ public class PlayerMove_room : MonoBehaviour
     {
         manager.Img();
         transform.position = new Vector3(-15, 0, 0);
+        Fade.fade.gameObject.SetActive(false);
+    }
+    public void EndingScene_room()
+    {
+        manager.Img();
+        transform.position = new Vector3(0, 0, 0);
         Fade.fade.gameObject.SetActive(false);
     }
 }

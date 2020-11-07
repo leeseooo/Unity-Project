@@ -26,14 +26,23 @@ public class ChangeImg : MonoBehaviour
     public Sprite 버블티;
     public Sprite 돌부리;
     public Sprite 횡단보도;
+    public Sprite 컴퓨터;
+    public Sprite 웅덩이;
+    public Sprite 고양이;
+    public Sprite 명신언덕;
+    public Sprite 바퀴벌레;
+    public Sprite 침대점프;
 
     public void Change()
     {
-        if (EndingNumber == 2)
+        if (EndingNumber == 1)
+            gameObject.GetComponent<Image>().sprite = 컴퓨터;
+        else if (EndingNumber == 2)
             gameObject.GetComponent<Image>().sprite = 돌부리;
         else if (EndingNumber == 3)
             gameObject.GetComponent<Image>().sprite = 바나나;
-
+        else if (EndingNumber == 4)
+            gameObject.GetComponent<Image>().sprite = 침대점프;
         else if (EndingNumber == 5)
             gameObject.GetComponent<Image>().sprite = 지하철의자;
 
@@ -65,5 +74,13 @@ public class ChangeImg : MonoBehaviour
             gameObject.GetComponent<Image>().sprite = 버블티;
         else if (EndingNumber == 27)
             gameObject.GetComponent<Image>().sprite = 횡단보도;
+        else if (EndingNumber == 28)
+            gameObject.GetComponent<Image>().sprite = 웅덩이;
+        else if (EndingNumber == 29)
+            gameObject.GetComponent<Image>().sprite = 바퀴벌레;
+        else if (EndingNumber == 30)
+            gameObject.GetComponent<Image>().sprite = 고양이;
+        else if (EndingNumber == 31)
+            gameObject.GetComponent<Image>().sprite = 명신언덕;
     }
 }
