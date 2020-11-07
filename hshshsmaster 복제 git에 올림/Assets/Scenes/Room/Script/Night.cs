@@ -1,0 +1,54 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Night : MonoBehaviour
+{
+    public GameObject NightPanel;
+    private bool isNight = false;
+    private float timer;
+    public ChangeImg ChangeImage;
+    public GameManager manager;
+    public Fadein Fade;
+
+    //문, 침대, 컴퓨터 체크... 해제
+    Collider2D[] cArray = new Collider2D[4];
+    public GameObject[] gArray = new GameObject[4];
+
+    void Start()
+    {
+        Random.InitState(System.DateTime.Now.Millisecond);
+        if (Random.Range(1, 5) == 1)
+        {
+            isNight = true;
+        }
+        NightPanel.SetActive(isNight);
+        for (int i = 0; i < 4; i++)
+        {
+            cArray[i] = gArray[i].GetComponent<Collider2D>();
+            cArray[i].enabled = !isNight;
+            //Debug.Log(i + "getCollider");
+        }
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (isNight && timer > 5)
+        {
+            //포탈 사용 X
+            manager.talkText.text = "앗 저녁이라니 !! 늦잠을 자버렸다~!!";
+            NightPanel.SetActive(false);
+            ChangeImage.EndingNumber = 11;
+            ChangeImage.Change();
+            EndingScene_room();
+            EndArray.setEndingArray(11, true);
+        }
+    }
+    public void EndingScene_room()
+    {
+        manager.Img();
+        transform.position = new Vector3(0, 0, 0);
+        Fade.fade.gameObject.SetActive(false);
+    }
+}

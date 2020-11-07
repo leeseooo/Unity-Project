@@ -1,0 +1,233 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerMove_room : MonoBehaviour
+{
+    public float jumpPower;
+    public float maxSpeed;//속력 상한값 설정
+    Rigidbody2D rigid;
+    SpriteRenderer spriteRenderer;
+    Animator anim;
+    private int jumpCheck;
+    private bool isOnbed;
+    private bool isSleeping;
+    float timer = 0f;
+    float timer2 = 0f;
+    GameObject scanObject;
+    public GameManager manager;
+    public GameObject frame;
+    public Fadein Fade;
+    public ChangeImg ChangeImage;
+
+    void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+    }
+    void Update()
+    {
+        //Jump
+        if (Input.GetButtonDown("Jump") && !anim.GetBool("isJumping"))
+        {
+            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            anim.SetBool("isJumping", true);
+            //침대에서 점프
+            if (isOnbed)
+            {
+                ++jumpCheck;
+                if (jumpCheck == 5)
+                {
+                    rigid.AddForce(new Vector2(50, 50), ForceMode2D.Impulse);
+                    manager.talkText.text = "침대가 너무나도 탄력적이라 천장을 뚫고 날아가버렸다~~!!";
+                    ChangeImage.EndingNumber = 4;
+                    ChangeImage.Change();
+                    EndingScene_room();
+                    EndArray.setEndingArray(4, true);
+                }
+            }
+        }
+        //Stop Speed
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
+        }
+        //Direction Sprite 방향전환
+        if (Input.GetButton("Horizontal"))
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        //Animation
+        if (Mathf.Abs(rigid.velocity.x) < 0.3) //절댓값이 0.3보다 작으면(멈추면)
+            anim.SetBool("isWalking", false);
+        else
+            anim.SetBool("isWalking", true);
+    }
+    void FixedUpdate()
+    {
+        //Move By Key Control
+        float h = Input.GetAxisRaw("Horizontal");
+
+        rigid.AddForce(Vector2.right * h * 2, ForceMode2D.Impulse);
+
+        if (rigid.velocity.x > maxSpeed) //Right Max Speed, 너무 빠를 때
+            rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
+        else if (rigid.velocity.x < maxSpeed * (-1)) //Left Max Speed
+            rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);//y축을 0으로 잡으면 공중에 안뜸
+
+        Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
+        //침대 위에 있는 지 검사.
+        RaycastHit2D bedHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Bed"));
+        if (bedHit.collider != null)//침대 위에 있음.
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                anim.SetBool("isSleeping", true);
+                isSleeping = true;
+            }
+        }
+        else
+        {
+            anim.SetBool("isSleeping", false);
+            isSleeping = false;
+        }
+        if (isSleeping)
+        {
+            timer2 += Time.deltaTime;
+            if (timer2 >= 5)
+            {
+                EndArray.setEndingArray(2, true);
+                manager.talkText.text = "이불 밖은 위험해 !! 침대 밖으로 나올 생각이 없다..";
+                ChangeImage.EndingNumber = 10;
+                ChangeImage.Change();
+                EndingScene_room();
+                EndArray.setEndingArray(10, true);
+            }
+        }
+        else
+            timer2 = 0f;
+        //Landing Platform
+        if (rigid.velocity.y < 0)
+        {
+            Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+            if (rayHit.collider != null)
+            {
+                if (rayHit.distance < 0.6f)
+                {
+                    anim.SetBool("isJumping", false);
+                    anim.SetBool("isSitting", false);
+                }
+            }
+        }
+
+        Debug.DrawRay(rigid.position, Vector3.right * (1), new Color(0, 1, 0));
+        RaycastHit2D rayHit2 = Physics2D.Raycast(rigid.position, Vector3.right, 1, LayerMask.GetMask("Object"));
+        if (rayHit2.collider != null) //스캔한 오브젝트 저장
+        {
+            scanObject = rayHit2.collider.gameObject;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z) && scanObject != null) //오브젝트 스캔
+        {
+            manager.Action(scanObject);
+            scanObject = null;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "bedCheck")
+        {
+            isOnbed = true;
+        }
+        else if (other.gameObject.tag == "door") //지하철 문이동
+        {
+            transform.Translate(22, 0, 0);
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "bedCheck")
+        {
+            isOnbed = false;
+            jumpCheck = 0;
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.name == "com")
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                manager.talkText.text = "컴퓨터의 유혹에 빠져...학교에 늦어버렸다!!";
+                ChangeImage.EndingNumber = 1;
+                ChangeImage.Change();
+                EndingScene_room();
+                EndArray.setEndingArray(1, true);
+            }
+        }
+        else if (other.gameObject.name == "chairTalk")
+        {
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                timer += Time.deltaTime;
+                anim.SetBool("isSitting", true);
+                if (timer > 0.5)
+                {
+                    manager.talkText.text = "의자에 엉덩이가 붙어 학교에 지각했다..";
+                    anim.SetBool("isSitting", false);
+                    ChangeImage.EndingNumber = 5;
+                    ChangeImage.Change();
+                    EndingScene();
+                    EndArray.setEndingArray(5, true);
+                }
+            }
+        }
+        else if (other.gameObject.name == "frontdoor")
+        {
+            timer += Time.deltaTime;
+            if (timer > 1)
+            {
+                ChangeImage.EndingNumber = 6;
+                ChangeImage.Change();
+                manager.talkText.text = "사람이 너무 많은 곳으로 내리려다... 인파에 파묻혔다!!";
+                EndingScene();
+                EndArray.setEndingArray(6, true);
+            }
+        }
+        else if (other.gameObject.name == "암모나이트")
+        {
+            bool picked = false;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                picked = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                manager.talkPanel.SetActive(false);
+                picked = false;
+            }
+            if (picked == true)
+            {
+                ChangeImage.EndingNumber = 7;
+                ChangeImage.Change();
+                manager.talkText.text = "꼰대 화석 선배를 만나 몸과 마음이 피폐해졌다..!";
+                EndingScene();
+                picked = false;
+                EndArray.setEndingArray(7, true);
+            }
+        }
+    }
+    public void EndingScene()
+    {
+        manager.Img();
+        transform.position = new Vector3(-15, 0, 0);
+        Fade.fade.gameObject.SetActive(false);
+    }
+    public void EndingScene_room()
+    {
+        manager.Img();
+        transform.position = new Vector3(0, 0, 0);
+        Fade.fade.gameObject.SetActive(false);
+    }
+}
