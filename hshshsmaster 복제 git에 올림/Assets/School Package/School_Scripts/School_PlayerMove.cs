@@ -82,7 +82,8 @@ public class School_PlayerMove : MonoBehaviour
         //12, 빵엔딩
         if(count_bread == 10)
         {
-            manager.talkText.text = "등교길에 빵 10개를 먹는 것은 급성 배탈을 유발한다. 이대로라면 [눈송]은 수업 중에 빵귀를 10번 뀔 것이다. 어쩔 수 없이 병원을 가야겠다.!";
+            manager.talkText.text = "등교길에 빵 10개를 먹는 것은 급성 배탈을 유발한다. 이대로라면 수업 중에 빵귀를 10번 뀔 것이다. 어쩔 수 없이 병원을 가야겠다.!";
+
         }
 
         //29.사다리 시간 엔딩
@@ -90,7 +91,7 @@ public class School_PlayerMove : MonoBehaviour
             ending_laddertime += Time.deltaTime;
             
             if(ending_laddertime >= 30){
-                manager.talkText.text = "엔딩) [눈송]은 사다리에 매달려있다가 힘이 모두 빠져버렸다! 눈송은 힘이빠져 제시간에 학교에 가지 못했다!";
+                manager.talkText.text = "사다리에 매달려있다가 힘이 모두 빠져버렸다! 눈송은 힘이빠져 제시간에 학교에 가지 못했다!";
             }
             if(!isLadder){
                 ending_laddertime = 0; //사다리에서 떨어지면 초기화

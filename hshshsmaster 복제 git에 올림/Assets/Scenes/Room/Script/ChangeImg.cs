@@ -17,7 +17,7 @@ public class ChangeImg : MonoBehaviour
     public Sprite 부자;
     public Sprite 비둘기;
     public Sprite 사다리;
-    public Sprite 코로나사이버;
+    public Sprite 코로나바이러스;
     public Sprite 킥보드;
     public Sprite 팀플;
     public Sprite 푸들;
@@ -34,6 +34,13 @@ public class ChangeImg : MonoBehaviour
     public Sprite 바퀴벌레;
     public Sprite 침대점프;
     public Sprite 늦잠;
+    public Sprite 등교성공;
+    public Sprite 버스놓침;
+    public Sprite 만원엘베;
+    public Sprite 스숙오류;
+    public Sprite 음식점;
+    public Sprite 떡;
+    public Sprite 헤딩;
 
     public void Change()
     {
@@ -63,13 +70,20 @@ public class ChangeImg : MonoBehaviour
             gameObject.GetComponent<Image>().sprite = 침대;
         else if (EndingNumber == 11)
             gameObject.GetComponent<Image>().sprite = 늦잠;
-
+        else if (EndingNumber == 12)
+            gameObject.GetComponent<Image>().sprite = 푸들;
+        else if (EndingNumber == 13)
+            gameObject.GetComponent<Image>().sprite = 팀플;
         else if (EndingNumber == 14)
             gameObject.GetComponent<Image>().sprite = 휴강;
-
+        else if (EndingNumber == 15)
+            gameObject.GetComponent<Image>().sprite = 교통사고;
         else if (EndingNumber == 16)
             gameObject.GetComponent<Image>().sprite = 킥보드;
-
+        else if (EndingNumber == 17)
+            gameObject.GetComponent<Image>().sprite = 헤딩;
+        else if (EndingNumber == 18)
+            gameObject.GetComponent<Image>().sprite = 코로나바이러스;
         else if (EndingNumber == 24)
             gameObject.GetComponent<Image>().sprite = 피시방;
 
@@ -88,5 +102,17 @@ public class ChangeImg : MonoBehaviour
             gameObject.GetComponent<Image>().sprite = 고양이;
         else if (EndingNumber == 31)
             gameObject.GetComponent<Image>().sprite = 명신언덕;
+        else if (EndingNumber == 32)
+            gameObject.GetComponent<Image>().sprite = 떡;
+        else if (EndingNumber == 39)
+            gameObject.GetComponent<Image>().sprite = 만원엘베;
+        else if (EndingNumber == 40)
+            gameObject.GetComponent<Image>().sprite = 등교성공;
+        else if (EndingNumber == 41)
+            gameObject.GetComponent<Image>().sprite = 버스놓침;
+        else if (EndingNumber == 42)
+            gameObject.GetComponent<Image>().sprite = 스숙오류;
+        else if (EndingNumber == 43)
+            gameObject.GetComponent<Image>().sprite = 배탈;
     }
 }

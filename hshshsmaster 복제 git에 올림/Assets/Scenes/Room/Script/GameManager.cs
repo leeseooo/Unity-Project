@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     public void SetBtn()
     {
         frame.SetActive(false);
-        talkPanel.SetActive(false);
+        talkText.text = "계속 진행~!";
+        //talkPanel.SetActive(false);
         btn.SetActive(false);
         Fade.fades = 1.0f;
         Fade.Update();

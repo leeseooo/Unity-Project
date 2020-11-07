@@ -18,7 +18,7 @@ public class Night : MonoBehaviour
     void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        if (Random.Range(1, 5) == 1)
+        if (Random.Range(1, 2) == 1)
         {
             isNight = true;
         }
@@ -38,7 +38,6 @@ public class Night : MonoBehaviour
         {
             //포탈 사용 X
             manager.talkText.text = "앗 저녁이라니 !! 늦잠을 자버렸다~!!";
-            NightPanel.SetActive(false);
             ChangeImage.EndingNumber = 11;
             ChangeImage.Change();
             EndingScene_room();

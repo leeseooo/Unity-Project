@@ -11,6 +11,7 @@ public class Fadein : MonoBehaviour
 
     public void Update()
     {
+
         fade.gameObject.SetActive(true);
         time += Time.deltaTime;
         if (fades > 0.0f && time >= 0.1f)
