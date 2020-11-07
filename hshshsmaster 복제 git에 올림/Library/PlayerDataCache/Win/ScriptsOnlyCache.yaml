@@ -6,6 +6,9 @@ ScriptsOnlyBuild:
     - ChangeImg
     - Fadein
     - GameManager
+    - MiniCamera
+    - MiniPlayerMove
+    - MiniTeacherMoves
     - Night
     - ObjData
     - PlayerMove_room
@@ -26,11 +29,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -50,6 +48,59 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
   sceneClasses:
+    Assets/Scenes/MiniRunGame.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 70
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 13546}
+    - Class: 114
+      Script: {instanceID: 14000}
+    - Class: 114
+      Script: {instanceID: 15056}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
     Assets/Scenes/Room.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -73,6 +124,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -94,19 +149,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12858}
     - Class: 114
+      Script: {instanceID: 12948}
+    - Class: 114
       Script: {instanceID: 13476}
     - Class: 114
       Script: {instanceID: 13722}
     - Class: 114
-      Script: {instanceID: 14108}
+      Script: {instanceID: 14110}
     - Class: 114
-      Script: {instanceID: 14268}
+      Script: {instanceID: 14272}
     - Class: 114
-      Script: {instanceID: 14560}
+      Script: {instanceID: 14564}
     - Class: 114
-      Script: {instanceID: 14974}
+      Script: {instanceID: 14980}
     - Class: 114
-      Script: {instanceID: 15236}
+      Script: {instanceID: 15214}
+    - Class: 114
+      Script: {instanceID: 15242}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -179,19 +238,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13334}
     - Class: 114
-      Script: {instanceID: 14112}
+      Script: {instanceID: 14114}
     - Class: 114
-      Script: {instanceID: 14132}
+      Script: {instanceID: 14134}
     - Class: 114
-      Script: {instanceID: 14560}
+      Script: {instanceID: 14564}
     - Class: 114
-      Script: {instanceID: 14856}
+      Script: {instanceID: 14862}
     - Class: 114
-      Script: {instanceID: 15100}
+      Script: {instanceID: 15106}
     - Class: 114
-      Script: {instanceID: 15208}
+      Script: {instanceID: 15214}
     - Class: 114
-      Script: {instanceID: 15248}
+      Script: {instanceID: 15254}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -243,6 +302,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -270,13 +333,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13722}
     - Class: 114
-      Script: {instanceID: 14268}
+      Script: {instanceID: 14272}
     - Class: 114
-      Script: {instanceID: 14560}
+      Script: {instanceID: 14564}
     - Class: 114
-      Script: {instanceID: 15208}
+      Script: {instanceID: 15214}
     - Class: 114
-      Script: {instanceID: 15236}
+      Script: {instanceID: 15242}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -632,7 +695,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 0c81e52b6da03bd055ab27fab413400c
+      Hash: 12fd76db5be71e716b1282baf421e497
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: School_Ending
@@ -696,6 +759,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 98255fca885615b04e2b466bf3fbabd2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIManager
   - hash:
       serializedVersion: 2
       Hash: 42c4822f842b2917b2d75bd30a3a270c
@@ -782,13 +851,19 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 94c901063e912fb8ec5844df7208b243
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: IvenManager
+  - hash:
+      serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 329f16cb6074821c0f7855f1aa2cd583
+      Hash: bb8577e8e23dda515130b4432faec397
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChangeImg
@@ -830,6 +905,12 @@ ScriptsOnlyBuild:
     className: MakeBubble
   - hash:
       serializedVersion: 2
+      Hash: 8d5e889e079043203b7195b7c909fc09
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InvenCS
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -848,13 +929,13 @@ ScriptsOnlyBuild:
     className: playerMove_Cave
   - hash:
       serializedVersion: 2
-      Hash: b6d3060b5023f08b10e357d00fe69e66
+      Hash: aff60ef8d3f508f76ff4aec628dcd6d0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: School_PlayerMove
   - hash:
       serializedVersion: 2
-      Hash: 7b33b5d44485fba50a01aef71c4e3bfa
+      Hash: f63177447c0b72ed249449e1d53b352d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Night
@@ -995,4 +1076,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Starting.unity
   - Assets/Scenes/Room.unity
   - Assets/Scenes/SubwayScene.unity
+  - Assets/Scenes/MiniRunGame.unity
   playerPath: "C:/Users/Owner/Desktop/APSS/\uB208\uC1A1\uD559\uAD50_\uBE4C\uB4DCtest2/project_NoonSong.exe"

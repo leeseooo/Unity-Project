@@ -10,11 +10,29 @@ public class UIManager : MonoBehaviour
     public Button IvenBtn;
     public GameObject invenPanel;
     bool activeInven = false;
+
+    //위치 관련..
+    public GameObject player;
+    private int location;
     
     void Start()
     {
         EndingText.text = "엔딩 수 : " + EndArray.schoolCnt + "/20"; //학교 엔딩 숫자로 조정.
         invenPanel.SetActive(activeInven);
+
+        location = EndArray.location;
+        switch (location)
+        {
+            case 0: //초기위치
+                player.gameObject.transform.Translate(1.5f, -3.5f, 0f);
+                break;
+            case 1: //버블티
+                player.gameObject.transform.Translate(5.5f, 70.0f, 0f);
+                break;
+            case 2: //교수님
+                player.gameObject.transform.Translate(28.0f, 30.0f, 0f);
+                break;
+        }
     }
     void Update()
     {

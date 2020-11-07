@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Ending_School : MonoBehaviour
 {
@@ -306,6 +307,15 @@ public class Ending_School : MonoBehaviour
         else if(collision.gameObject.name == "Class3"){
             class_3 = true;
         }
+        //9-1. 교수님과 달리기 ? !
+        else if(collision.gameObject.name == "Teacher"){
+            manager.talkText.text = "교수님이 달리기 시합을 걸어왔다 !(계속하려면 z키)";
+            if(Input.GetKeyDown(KeyCode.Z)){
+                EndArray.location = 2;
+                SceneManager.LoadScene("MiniRunGame");
+                Debug.Log("교수님과 달리기 미니게임을 로드합니다.");
+            }
+        }
 
         //10. 부자 엔딩 (player이동 스크립트에 구현)
         //11. 입구역 엔딩 (x)
@@ -354,7 +364,7 @@ public class Ending_School : MonoBehaviour
             manager.talkText.text = "고양이에게 말을 걸려면 z키를 누르세요.";
         }
     
-        //18. 코로나 엔딩 - 동굴 미니게임
+        //18. 코로나 엔딩 - 동굴 미니게임 X
         //18-2. 코로나 바이러스 엔딩 - OnCollisionEnter에 구현
 
         //19. 전자출결 - 교실

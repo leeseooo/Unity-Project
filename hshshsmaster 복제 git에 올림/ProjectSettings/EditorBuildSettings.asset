@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SubwayScene.unity
     guid: 74d0d8e6605a94b43af4615ba92f5904
+  - enabled: 1
+    path: Assets/Scenes/MiniRunGame.unity
+    guid: 9eb84ee921e71412fae58bb62cb08279
   m_configObjects: {}

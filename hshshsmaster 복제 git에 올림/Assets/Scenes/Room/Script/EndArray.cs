@@ -7,8 +7,10 @@ public static class EndArray
 {
     public static bool[] EndingArray = new bool[50];
     public static int roomCnt, subCnt, schoolCnt;
-    public static void setEndingArray(int i,bool b)
-    {
+    
+    //대학가 player 리스폰 위치 변수.
+    public static int location;
+    public static void setEndingArray(int i, bool b){
         EndingArray[i] = b;
     }
     public static bool getEndingArray(int i)
