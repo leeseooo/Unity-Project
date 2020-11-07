@@ -2,14 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MakeBubble : MonoBehaviour
 {
     [SerializeField]
     public GameObject bubble;
-    private int score;
+    public int score;
     public Text scoreText;
-
+    
+    void Update()
+    {
+        if (score >= 30)
+        {
+            SceneManager.LoadScene("School");
+        }
+    }
     void Start()
     {
         CreateBubble();

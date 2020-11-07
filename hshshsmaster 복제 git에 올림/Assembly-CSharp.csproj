@@ -87,13 +87,13 @@
      <Compile Include="Assets\Cave\Script\playerMove_Cave.cs" />
      <Compile Include="Assets\School Package\School_Scripts\School_PlayerMove.cs" />
      <Compile Include="Assets\Scenes\Room\Script\Night.cs" />
+     <Compile Include="Assets\Scenes\Room\Script\PotalToSchool.cs" />
      <Compile Include="Assets\Scenes\Room\Script\FadeOut.cs" />
      <Compile Include="Assets\bubbleState.cs" />
      <Compile Include="Assets\Scripts\MiniTeacherMoves.cs" />
      <Compile Include="Assets\Scenes\Room\Script\Fadein.cs" />
      <Compile Include="Assets\Scenes\Room\Script\AlbumCs.cs" />
      <Compile Include="Assets\Cave\Script\enemy.cs" />
-     <Compile Include="Assets\Scenes\Room\Script\PotalToSchool.cs" />
      <None Include="Assets\BGM!!\ReadMe.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/School Package/School_Scenes/School.unity
     guid: a3a13ac0aede94fb89bc92d8750c2d5c
+  - enabled: 1
+    path: Assets/Scenes/BubbleTea.unity
+    guid: 99432c5fada32fa42b248b6d496a765a
   m_configObjects: {}

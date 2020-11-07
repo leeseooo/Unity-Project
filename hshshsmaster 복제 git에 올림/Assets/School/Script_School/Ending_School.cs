@@ -203,13 +203,7 @@ public class Ending_School : MonoBehaviour
         {
             mini_2.SetActive(false);
             //씬전환 - 미니게임
-
-            //전환 후 돌아와서
-            manager.talkText.text = "찝찝하게 버블이 이에 꼈다. 지각하더라도 버블은 빼야만 해.";
-            ChangeImage.EndingNumber = 26;
-            ChangeImage.Change();
-            EndingScene();
-            EndArray.setEndingArray(26, true);
+            SceneManager.LoadScene("BubbleTea");
             bubbletea = false;
         }
 

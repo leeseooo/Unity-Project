@@ -93344,6 +93344,10 @@ MonoBehaviour:
   EndingText: {fileID: 517847376}
   IvenBtn: {fileID: 1493433984}
   invenPanel: {fileID: 1465948820}
+  manager: {fileID: 656057572}
+  ChangeImage: {fileID: 1912784325}
+  bubblegame: {fileID: 0}
+  Fade: {fileID: 691465276}
   player: {fileID: 49084584}
 --- !u!212 &1966926178
 SpriteRenderer:
