@@ -33,7 +33,7 @@ public class PlayerMove_room : MonoBehaviour
     void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        if (Random.Range(1, 2) == 1)
+        if (Random.Range(1, 5) == 1)
         {
             isNight = true;
         }
