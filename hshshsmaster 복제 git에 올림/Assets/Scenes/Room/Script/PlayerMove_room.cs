@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerMove_room : MonoBehaviour
 {
+    public GameObject NightPanel;
+    private bool isNight = false;
     public float jumpPower;
     public float maxSpeed;//속력 상한값 설정
     Rigidbody2D rigid;
@@ -21,6 +23,25 @@ public class PlayerMove_room : MonoBehaviour
     public Fadein Fade;
     public ChangeImg ChangeImage;
 
+    //문, 침대, 컴퓨터 체크... 해제
+    Collider2D[] cArray = new Collider2D[3];
+    public GameObject[] gArray = new GameObject[3];
+
+    void Start()
+    {
+        Random.InitState(System.DateTime.Now.Millisecond);
+        if (Random.Range(1, 2) == 1)
+        {
+            isNight = true;
+        }
+        NightPanel.SetActive(isNight);
+        for (int i = 0; i < 3; i++)
+        {
+            cArray[i] = gArray[i].GetComponent<Collider2D>();
+            cArray[i].enabled = !isNight;
+            //Debug.Log(i + "getCollider");
+        }
+    }
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -62,6 +83,17 @@ public class PlayerMove_room : MonoBehaviour
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
+
+        timer += Time.deltaTime;
+        if (isNight && timer > 5)
+        {
+            //포탈 사용 X
+            manager.talkText.text = "앗 저녁이라니 !! 늦잠을 자버렸다~!!";
+            ChangeImage.EndingNumber = 11;
+            ChangeImage.Change();
+            EndingScene_room();
+            EndArray.setEndingArray(11, true);
+        }
     }
     void FixedUpdate()
     {
@@ -74,41 +106,12 @@ public class PlayerMove_room : MonoBehaviour
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if (rigid.velocity.x < maxSpeed * (-1)) //Left Max Speed
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);//y축을 0으로 잡으면 공중에 안뜸
-
-        Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
-        //침대 위에 있는 지 검사.
-        RaycastHit2D bedHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Bed"));
-        if (bedHit.collider != null)//침대 위에 있음.
-        {
-            manager.talkText.text = "점프하고 싶은 침대야. 윗방향키를 누르면 잘 수 있겠어.";
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                manager.talkText.text = "드르르르렁";
-                anim.SetBool("isSleeping", true);
-                isSleeping = true;
-            }
-        }
-        else
-        {
-            anim.SetBool("isSleeping", false);
-            isSleeping = false;
-        }
-        if (isSleeping)
-        {
-            timer2 += Time.deltaTime;
-            if (timer2 >= 5)
-            {
-                EndArray.setEndingArray(2, true);
-                manager.talkText.text = "이불 밖은 위험해 !! 침대 밖으로 나올 생각이 없다..";
-                ChangeImage.EndingNumber = 10;
-                ChangeImage.Change();
-                EndingScene_room();
-                EndArray.setEndingArray(10, true);
-            }
-        }
         else
             timer2 = 0f;
+        Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
+        
         //Landing Platform
+
         if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
@@ -169,6 +172,25 @@ public class PlayerMove_room : MonoBehaviour
             EndingScene();
             EndArray.setEndingArray(7, true);
         }
+        else if (other.gameObject.name == "bedCheck") {
+            manager.talkText.text = "점프하고 싶은 침대야. z키를 꾹 누르고 있으면 잘 수 있겠어.";
+        }
+        else if (Input.GetKey(KeyCode.Z)&& other.gameObject.name == "bedCollider")
+        {
+            anim.SetBool("isSleeping", true);
+            timer += Time.deltaTime;
+            Debug.Log("자는중 " + timer);
+            if (timer >= 3)
+            {
+                EndArray.setEndingArray(2, true);
+                manager.talkText.text = "이불 밖은 위험해 !! 침대 밖으로 나올 생각이 없다..";
+                ChangeImage.EndingNumber = 10;
+                ChangeImage.Change();
+                EndingScene_room();
+                EndArray.setEndingArray(10, true);
+                anim.SetBool("isSleeping", false);
+            }
+        }
         else if (other.gameObject.name == "doorCollider")
         {
             manager.talkText.text = "뒤로 돌아가려면 문앞에서 z키를 누르세요.";
@@ -185,17 +207,18 @@ public class PlayerMove_room : MonoBehaviour
         {
             manager.talkText.text = "개찰구로 나가면 대학가가 나올 것 같아!";
         }
-        else if (other.gameObject.name == "com")
+        else if (other.gameObject.name == "comCollider")
         {
-            manager.talkText.text = "윗방향키 눌러서 컴퓨터 전원을 킬 수 있어. 게임한판ㄱㄱ?";
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                manager.talkText.text = "컴퓨터의 유혹에 빠져...학교에 늦어버렸다!!";
-                ChangeImage.EndingNumber = 1;
-                ChangeImage.Change();
-                EndingScene_room();
-                EndArray.setEndingArray(1, true);
-            }
+            manager.talkText.text = "z키를 눌러서 컴퓨터 전원을 킬 수 있어. 게임한판ㄱㄱ?";
+
+        }
+        if (Input.GetKeyDown(KeyCode.Z) && other.gameObject.name == "com")
+        {
+            manager.talkText.text = "컴퓨터의 유혹에 빠져...학교에 늦어버렸다!!";
+            ChangeImage.EndingNumber = 1;
+            ChangeImage.Change();
+            EndingScene_room();
+            EndArray.setEndingArray(1, true);
         }
         else if (other.gameObject.name == "chairTalk2")
         {
@@ -256,7 +279,8 @@ public class PlayerMove_room : MonoBehaviour
     public void EndingScene_room()
     {
         manager.Img();
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(-1, 0, 0);
         Fade.fade.gameObject.SetActive(false);
+        timer = 0;
     }
 }

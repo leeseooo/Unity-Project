@@ -12,8 +12,8 @@ public class Night : MonoBehaviour
     public Fadein Fade;
 
     //문, 침대, 컴퓨터 체크... 해제
-    Collider2D[] cArray = new Collider2D[4];
-    public GameObject[] gArray = new GameObject[4];
+    Collider2D[] cArray = new Collider2D[3];
+    public GameObject[] gArray = new GameObject[3];
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class Night : MonoBehaviour
     public void EndingScene_room()
     {
         manager.Img();
-        transform.position = new Vector3(0, 0, 0);
+        transform.position = new Vector3(-1, 0, 0);
         Fade.fade.gameObject.SetActive(false);
     }
 }
