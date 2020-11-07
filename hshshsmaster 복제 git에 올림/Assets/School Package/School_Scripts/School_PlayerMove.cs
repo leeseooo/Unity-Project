@@ -12,7 +12,8 @@ public class School_PlayerMove : MonoBehaviour
     Animator anim;
     private int jumpCheck;
     
-    AudioSource audio;
+    public AudioSource audio1;
+    public AudioSource audio2;
    
     float timer;
     GameObject scanObject;
@@ -31,7 +32,8 @@ public class School_PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
+        audio1 = GetComponent<AudioSource>();
+        audio2 = GetComponent<AudioSource>();
 
     }
     void Update()
@@ -41,6 +43,7 @@ public class School_PlayerMove : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             anim.SetBool("isJumping", true);
+            audio2.Play();
             
         }
         //Stop Speed
@@ -162,7 +165,7 @@ public class School_PlayerMove : MonoBehaviour
         if(other.gameObject.tag == "Coin"){
             //포인트
             count_coin = count_coin + 1;
-            audio.Play();
+            audio1.Play();
             // Deactive item
             other.gameObject.SetActive(false);
 
@@ -176,7 +179,7 @@ public class School_PlayerMove : MonoBehaviour
         if(other.gameObject.tag == "Bread"){
             //포인트
             count_bread = count_bread + 1;
-            audio.Play();
+            audio1.Play();
             // Deactive item
             other.gameObject.SetActive(false);
 
