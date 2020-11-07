@@ -11,11 +11,15 @@ public class BubblePlayerMove : MonoBehaviour
     Animator anim;
     public MakeBubble manager;
 
+    //버블먹는 소리
+    AudioSource audio_bubble;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        audio_bubble = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -43,6 +47,7 @@ public class BubblePlayerMove : MonoBehaviour
     {
         if(collision.gameObject.tag == "bubble")
         {
+            audio_bubble.Play();
             manager.Score();
         }
     }
