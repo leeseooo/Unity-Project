@@ -23,6 +23,9 @@ public class PlayerMove_room : MonoBehaviour
     public Fadein Fade;
     public ChangeImg ChangeImage;
 
+    //점프 소리
+    AudioSource audio_rooms;
+
     //문, 침대, 컴퓨터 체크... 해제
     Collider2D[] cArray = new Collider2D[3];
     public GameObject[] gArray = new GameObject[3];
@@ -47,6 +50,7 @@ public class PlayerMove_room : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        audio_rooms = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -55,6 +59,7 @@ public class PlayerMove_room : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             anim.SetBool("isJumping", true);
+            audio_rooms.Play();
             //침대에서 점프
             if (isOnbed)
             {
