@@ -11,6 +11,8 @@ public class School_PlayerMove : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator anim;
     private int jumpCheck;
+    
+    AudioSource audio;
    
     float timer;
     GameObject scanObject;
@@ -29,6 +31,8 @@ public class School_PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+
     }
     void Update()
     {
@@ -158,6 +162,7 @@ public class School_PlayerMove : MonoBehaviour
         if(other.gameObject.tag == "Coin"){
             //포인트
             count_coin = count_coin + 1;
+            audio.Play();
             // Deactive item
             other.gameObject.SetActive(false);
 
