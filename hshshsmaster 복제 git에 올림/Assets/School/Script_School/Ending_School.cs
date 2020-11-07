@@ -8,6 +8,9 @@ public class Ending_School : MonoBehaviour
 {
     GameObject scanObject;
     public GameManager manager;
+    public GameObject mini_1;
+
+    bool minigame_teacher;
     
     //엔딩관련 변수
     bool bus,elev,bubbletea, restaurant_1, restaurant_2, restaurant_3, restaurant_4, class_1, class_2, class_3,cat_tag;
@@ -239,6 +242,14 @@ public class Ending_School : MonoBehaviour
             EndArray.setEndingArray(43, true);
             restaurant_count = 6;
         }
+
+        if(minigame_teacher && Input.GetKeyDown(KeyCode.Z)){
+                mini_1.SetActive(false);
+                EndArray.location = 2;
+                SceneManager.LoadScene("MiniRunGame");
+                Debug.Log("교수님과 달리기 미니게임을 로드합니다.");
+                minigame_teacher = false;
+            }
         
     }
 
@@ -309,12 +320,18 @@ public class Ending_School : MonoBehaviour
         }
         //9-1. 교수님과 달리기 ? !
         else if(collision.gameObject.name == "Teacher"){
+            mini_1.SetActive(true);
             manager.talkText.text = "교수님이 달리기 시합을 걸어왔다 !(계속하려면 z키)";
+            minigame_teacher = true;
+            // 위로 옮김 
+            /*
             if(Input.GetKeyDown(KeyCode.Z)){
+                mini_1.SetActive(false);
                 EndArray.location = 2;
                 SceneManager.LoadScene("MiniRunGame");
                 Debug.Log("교수님과 달리기 미니게임을 로드합니다.");
             }
+            */
         }
 
         //10. 부자 엔딩 (player이동 스크립트에 구현)
