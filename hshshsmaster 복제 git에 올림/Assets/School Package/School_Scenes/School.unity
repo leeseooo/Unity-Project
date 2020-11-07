@@ -757,8 +757,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 10
   maxSpeed: 5
-  audio1: {fileID: 49084593}
-  audio2: {fileID: 49084594}
+  audio: {fileID: 0}
+  clip:
+  - {fileID: 8300000, guid: 8a3ecfb7a33b7ec4aa951a1fc22d9165, type: 3}
+  - {fileID: 8300000, guid: c97c172eeb6f31c4f942e8c5c72558ea, type: 3}
   manager: {fileID: 656057572}
   count_coin: 0
   count_bread: 0
@@ -3990,7 +3992,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
