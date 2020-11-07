@@ -8,7 +8,8 @@ public class Ending_School : MonoBehaviour
 {
     GameObject scanObject;
     public GameManager manager;
-    public GameObject mini_1;
+    public GameObject mini_1; // 교수님과 달리기 이미지
+    public GameObject mini_2; // 버블티먹기 설명 이미지
 
     bool minigame_teacher;
     
@@ -197,14 +198,19 @@ public class Ending_School : MonoBehaviour
             bateacher = false;
         }
 
-        //26. 버블티 가게 엔딩 (●)
+        //26. 버블티 가게 엔딩 (●) - 미니게임연결
         else if (bubbletea && Input.GetKeyDown(KeyCode.Z))
         {
+            mini_2.SetActive(false);
+            //씬전환 - 미니게임
+
+            //전환 후 돌아와서
             manager.talkText.text = "찝찝하게 버블이 이에 꼈다. 지각하더라도 버블은 빼야만 해.";
             ChangeImage.EndingNumber = 26;
             ChangeImage.Change();
             EndingScene();
             EndArray.setEndingArray(26, true);
+            bubbletea = false;
         }
 
         //28. 학교 앞 음식점 5개 이상 살펴보면 배불러서 지각
@@ -243,6 +249,7 @@ public class Ending_School : MonoBehaviour
             restaurant_count = 6;
         }
 
+        //교수님과 달리기
         if(minigame_teacher && Input.GetKeyDown(KeyCode.Z)){
                 mini_1.SetActive(false);
                 EndArray.location = 2;
@@ -436,6 +443,7 @@ public class Ending_School : MonoBehaviour
 
         //26. 버블티 가게 엔딩
         else if(collision.gameObject.name == "Bubbletea"){
+            mini_2.SetActive(true);
             manager.talkText.text = "카페에 들어가려면 z키를 누르세요.";
             bubbletea = true;
         }
@@ -532,6 +540,7 @@ public class Ending_School : MonoBehaviour
         //26. 버블티 가게 엔딩
         else if(collision.gameObject.name == "Bubbletea"){
             manager.talkText.text = "카페인 안먹으면 분명 강의듣다 졸텐데..";
+            bubbletea = false;
         }
 
         
