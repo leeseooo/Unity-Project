@@ -176,6 +176,7 @@ public class School_PlayerMove : MonoBehaviour
         if(other.gameObject.tag == "Bread"){
             //포인트
             count_bread = count_bread + 1;
+            audio.Play();
             // Deactive item
             other.gameObject.SetActive(false);
 
