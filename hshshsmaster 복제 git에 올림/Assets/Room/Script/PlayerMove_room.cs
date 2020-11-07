@@ -15,8 +15,9 @@ public class PlayerMove_room : MonoBehaviour
     float timer = 0f;
     GameObject scanObject;
     public GameManager manager;
-    public FadeOut fadeout;
     public GameObject frame;
+    public Fadein Fade;
+    public ChangeImg ChangeImage;
 
     void Awake()
     {
@@ -35,9 +36,9 @@ public class PlayerMove_room : MonoBehaviour
             if (isOnbed)
             {
                 Debug.Log("침대에서 점프횟수: " + (++jumpCheck));
-                if (jumpCheck ==5)
+                if (jumpCheck == 5)
                 {
-                    rigid.AddForce(new Vector2 (3,8), ForceMode2D.Impulse);
+                    rigid.AddForce(new Vector2(3, 8), ForceMode2D.Impulse);
                     manager.talkText.text = "탄력적인 침대는 [눈송]을 천장을 뚫고 날려버렸다~~!";
                 }
             }
@@ -103,7 +104,7 @@ public class PlayerMove_room : MonoBehaviour
             Debug.Log("Enter");
             isOnbed = true;
         }
-        else if(other.gameObject.tag == "door") //지하철 문이동
+        else if (other.gameObject.tag == "door") //지하철 문이동
         {
             transform.Translate(22, 0, 0);
         }
@@ -124,46 +125,64 @@ public class PlayerMove_room : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 manager.talkText.text = "눈송은 컴퓨터의 유혹에 빠져...학교에 늦어버렸다!!";
-                manager.isAction = false;
+                ChangeImage.EndingNumber = 4;
+                ChangeImage.Change();
+                EndingScene();
             }
         }
-        else if (other.gameObject.name == "chairCollider")
+        else if (other.gameObject.name == "chairTalk")
         {
-            manager.talkText.text = "앉으려면 아래 방향키를 누르세요.";
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow))
             {
-                manager.talkPanel.SetActive(false);
-                anim.SetBool("isSitting", true);
                 timer += Time.deltaTime;
-                if (timer > 0.3)
+                anim.SetBool("isSitting", true);
+                if (timer > 0.5)
                 {
+                    ChangeImage.EndingNumber = 5;
+                    ChangeImage.Change();
                     EndingScene();
                     manager.talkText.text = "눈송이는 의자에 엉덩이가 붙어 학교에 지각했다..";
                     anim.SetBool("isSitting", false);
                 }
             }
         }
-        else if(other.gameObject.name == "frontdoor")
+        else if (other.gameObject.name == "frontdoor")
         {
             timer += Time.deltaTime;
             if (timer > 1)
             {
+                ChangeImage.EndingNumber = 6;
+                ChangeImage.Change();
                 manager.talkText.text = "사람이 너무 많은 곳으로 내리려다... 인파에 파묻혔다!!";
                 EndingScene();
             }
         }
-    }
-    void EndingScene()
-    {
-        fadeout.OutFade();
-        manager.Img();
-        if (manager.isClicked == true)
+        else if (other.gameObject.name == "암모나이트")
         {
-            fadeout.InFade();
-            transform.position = new Vector3(-15, 0, 0);
-            manager.talkPanel.SetActive(false);
-            timer = 0;
-            manager.isClicked = false;
+            bool picked = false;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                picked = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                manager.talkPanel.SetActive(false);
+                picked = false;
+            }
+            if (picked == true)
+            {
+                ChangeImage.EndingNumber = 7;
+                ChangeImage.Change();
+                manager.talkText.text = "꼰대 화석 선배를 만나 몸과 마음이 피폐해졌다..!";
+                EndingScene();
+                picked = false;
+            }
         }
+    }
+    public void EndingScene()
+    {
+        manager.Img();
+        transform.position = new Vector3(-15, 0, 0);
+        Fade.fade.gameObject.SetActive(false);
     }
 }

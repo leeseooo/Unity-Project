@@ -5,26 +5,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-        public TalkManager talkManager;
+    public TalkManager talkManager;
     public Text talkText;
     public GameObject talkPanel;
     public GameObject scanObject;
     public bool isAction;
-    public bool isClicked;
     public int talkIndex;
     public GameObject EndingImg;
     public GameObject frame;
-    float timer = 0f;
+    public float timer = 0f;
     public GameObject btn;
+    public Fadein Fade;
 
-    void Awake()
-    {
-        //EndArray 초기화 <-근데 씬 바뀌어도 적용되는지는 실험해봐야함ㅜ
-        for(int i = 0; i < 50; i++)
-        {
-            EndArray.setEndingArray(i, false);
-        }
-    }
     public void Action(GameObject scanObj)
     {
         scanObject = scanObj;
@@ -35,31 +27,24 @@ public class GameManager : MonoBehaviour
     }
     public void Img()
     {
-        timer += Time.deltaTime;
-        if (timer > 1)
-        {
-            talkPanel.SetActive(true);
-            frame.SetActive(true);
-            EndingImg.SetActive(true);
-            btn.SetActive(true);
-        }
-        if (isClicked)
-        {
-            frame.SetActive(false);
-            btn.SetActive(false);
-        }
+        talkPanel.SetActive(true);
+        frame.SetActive(true);
+        EndingImg.SetActive(true);
+        btn.SetActive(true);
     }
     public void SetBtn()
     {
-        isClicked = true;
         frame.SetActive(false);
+        talkPanel.SetActive(false);
         btn.SetActive(false);
+        Fade.fades = 1.0f;
+        Fade.Update();
     }
     void Talk(int id, bool isNpc)
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
 
-        if(talkData == null) //대화 끝
+        if (talkData == null) //대화 끝
         {
             talkIndex = 0;
             isAction = false;

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: C:/Users/leese/Desktop/Final_Plz-940efd871006065705a373b218150b13b6ad24a9/11_1project/project_NoonSong/Assets/Scenes/SubwayScene.unity
+- path: Assets/Scenes/SubwayScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

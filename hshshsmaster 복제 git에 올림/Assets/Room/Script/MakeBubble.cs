@@ -26,7 +26,7 @@ public class MakeBubble : MonoBehaviour
     public void Score()
     {
         score++;
-        scoreText.text = "획득 버블 " + score +"개";
+        scoreText.text = "획득 버블 " + score +"개" + " / 30개";
     }
     private void CreateBubble()
     {
