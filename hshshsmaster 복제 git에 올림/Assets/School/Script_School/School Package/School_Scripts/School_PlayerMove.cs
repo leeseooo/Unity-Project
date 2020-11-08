@@ -49,7 +49,7 @@ public class School_PlayerMove : MonoBehaviour
     {
         manager.Img();
         audio.clip = clip[2];
-        //audio.Play();
+        audio.Play();
         Fade.fade.gameObject.SetActive(false);
     }
 
@@ -100,6 +100,7 @@ public class School_PlayerMove : MonoBehaviour
         if(count_bread == 10)
         {
             manager.talkText.text = "등교길에 빵 10개를 먹는 것은 급성 배탈을 유발한다. 이대로라면 수업 중에 빵귀를 10번 뀔 것이다. 어쩔 수 없이 병원을 가야겠다.!";
+            count_bread = 20;
             ChangeImage.EndingNumber = 43;
             ChangeImage.Change();
             EndingScene();
@@ -110,13 +111,15 @@ public class School_PlayerMove : MonoBehaviour
         //29.사다리 시간 엔딩
         if(isLadder){
             ending_laddertime += Time.deltaTime;
-            
-            if(ending_laddertime >= 30){
+    
+            if(ending_laddertime >= 30 && ending_laddertime <= 32){
                 manager.talkText.text = "사다리에 매달려있다가 힘이 모두 빠져버렸다! 눈송은 힘이빠져 제시간에 학교에 가지 못했다!";
                 ChangeImage.EndingNumber = 44;
                 ChangeImage.Change();
                 EndingScene();
                 EndArray.setEndingArray(30, true);
+                
+
            
             }
             if(!isLadder){
@@ -210,6 +213,7 @@ public class School_PlayerMove : MonoBehaviour
                 ChangeImage.Change();
                 EndingScene();
                 EndArray.setEndingArray(31, true);
+                count_coin = 40;
             }
         }
         if(other.gameObject.tag == "Bread"){
