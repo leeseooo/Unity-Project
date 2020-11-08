@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
 
     //위치 관련..
     public GameObject player;
-    private int location;
+    private int location = EndArray.location;
 
     public void EndingScene()
     {
@@ -29,12 +29,12 @@ public class UIManager : MonoBehaviour
     {
         EndingText.text = "엔딩 수 : " + EndArray.schoolCnt + "/24"; //학교 엔딩 숫자로 조정. (8~31까지 총 24개)
         invenPanel.SetActive(activeInven);
-
-        location = EndArray.location;
+        
         switch (location)
         {
             case 0: //초기위치
                 player.gameObject.transform.Translate(1.5f, 0.0f, 0f);
+                location++;
                 break;
             case 1: //버블티
                 player.gameObject.transform.Translate(28.0f, 35.0f, 0f);

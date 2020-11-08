@@ -89,7 +89,7 @@ public class Ending_School : MonoBehaviour
             else
             {
                 manager.talkText.text = "사람이 너무 많아 탈 수 없다! 엘레베이터를 타려면 만원 아이템을 가져와라!";
-                ChangeImage.EndingNumber = 41;
+                ChangeImage.EndingNumber = 39;
                 ChangeImage.Change();
                 EndingScene();
                 EndArray.setEndingArray(10, true);

@@ -31,21 +31,7 @@ public class PlayerMove_room : MonoBehaviour
     Collider2D[] cArray = new Collider2D[3];
     public GameObject[] gArray = new GameObject[3];
 
-    /*void Start()
-    {
-        Random.InitState(System.DateTime.Now.Millisecond);
-        if (Random.Range(1, 5) == 1)
-        {
-            isNight = true;
-        } 
-        NightPanel.SetActive(isNight);
-        for (int i = 0; i < 3; i++)
-        {
-            cArray[i] = gArray[i].GetComponent<Collider2D>();
-            cArray[i].enabled = !isNight;
-            //Debug.Log(i + "getCollider");
-        }
-    }*/
+    
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -90,19 +76,6 @@ public class PlayerMove_room : MonoBehaviour
             anim.SetBool("isWalking", false);
         else
             anim.SetBool("isWalking", true);
-
-        timer += Time.deltaTime;
-        /*if (isNight && timer > 5)
-        {
-            //포탈 사용 X
-            manager.talkText.text = "앗 저녁이라니 !! 늦잠을 자버렸다~!!";
-            ChangeImage.EndingNumber = 11;
-            ChangeImage.Change();
-            EndArray.setEndingArray(4, true);
-            SceneManager.LoadScene("Room");
-            //EndingScene_room();
-            //EndArray.roomCnt++;
-        }*/
     }
     void FixedUpdate()
     {
