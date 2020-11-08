@@ -33,7 +33,10 @@ public static class EndArray
     }
     public static int getCnt(){
         int cnt =0;
-        for(int i=8;i<=24;i++)
+
+        
+
+        for(int i=8;i<=31;i++)
             if(EndingArray[i])
                 cnt++;
         return cnt;
