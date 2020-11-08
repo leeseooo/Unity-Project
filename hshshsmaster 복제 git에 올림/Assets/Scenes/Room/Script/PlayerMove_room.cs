@@ -191,7 +191,7 @@ public class PlayerMove_room : MonoBehaviour
             anim.SetBool("isSleeping", true);
             timer += Time.deltaTime;
             Debug.Log("자는중 " + timer);
-            if (timer >= 3)
+            if (timer >= 10)
             {
                 EndArray.setEndingArray(2, true);
                 manager.talkText.text = "이불 밖은 위험해 !! 침대 밖으로 나올 생각이 없다..";

@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
             case 1: //버블티
                 player.gameObject.transform.Translate(28.0f, 35.0f, 0f);
                 //전환 후 돌아와서
-                Debug.Log("되냐?");
                 manager.talkText.text = "찝찝하게 버블이 이에 꼈다. 지각하더라도 버블은 빼야만 해.";
                 ChangeImage.EndingNumber = 26;
                 ChangeImage.Change();

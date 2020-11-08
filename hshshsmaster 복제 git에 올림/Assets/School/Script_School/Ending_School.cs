@@ -236,10 +236,10 @@ public class Ending_School : MonoBehaviour
         //28.
         if(restaurant_count == 5){
             manager.talkText.text = "학교 앞 음식점은 보기만 해도 배부르다..몸이 무거워져서 지각하고 말았다!";
-            ChangeImage.EndingNumber = 43;
+            ChangeImage.EndingNumber = 31;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(43, true);
+            EndArray.setEndingArray(31, true);
             restaurant_count = 6;
         }
 

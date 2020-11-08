@@ -101,7 +101,7 @@ public class ChangeImg : MonoBehaviour
         else if (EndingNumber == 30)
             gameObject.GetComponent<Image>().sprite = 고양이;
         else if (EndingNumber == 31)
-            gameObject.GetComponent<Image>().sprite = 명신언덕;
+            gameObject.GetComponent<Image>().sprite = 음식점;
         else if (EndingNumber == 32)
             gameObject.GetComponent<Image>().sprite = 떡;
         else if (EndingNumber == 39)
