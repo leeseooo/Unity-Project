@@ -28,10 +28,19 @@ public class Ending_School : MonoBehaviour
     public Fadein Fade;
     public ChangeImg ChangeImage;
 
+    public AudioSource audio;
+    [SerializeField] private AudioClip [] clip;
+
+    void Awake(){
+        audio = GetComponent<AudioSource>();
+    }
+
     //엔딩 화면 코드
     void EndingScene()
     {
         manager.Img();
+        audio.clip = clip[0];
+        audio.Play();
         Fade.fade.gameObject.SetActive(false);
     }
 
