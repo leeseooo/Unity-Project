@@ -58,7 +58,7 @@ public class Ending_School : MonoBehaviour
                 ChangeImage.EndingNumber = 40;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(40, true);
+                EndArray.setEndingArray(8, true);
                 //순간이동
                 transform.Translate(-19.05f, 45.05f, 0);
 
@@ -69,7 +69,7 @@ public class Ending_School : MonoBehaviour
                 ChangeImage.EndingNumber = 41;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(41, true);
+                EndArray.setEndingArray(9, true);
             }
         }
 
@@ -92,7 +92,7 @@ public class Ending_School : MonoBehaviour
                 ChangeImage.EndingNumber = 41;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(41, true);
+                EndArray.setEndingArray(10, true);
             }
         }
 
@@ -118,7 +118,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 9;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(9, true);
+            EndArray.setEndingArray(11, true);
         }
 
         //14. 휴강(●)
@@ -128,7 +128,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 14;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(14, true);
+            EndArray.setEndingArray(12, true);
         }
 
 
@@ -172,7 +172,7 @@ public class Ending_School : MonoBehaviour
                 ChangeImage.EndingNumber = 30;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(30, true);
+                EndArray.setEndingArray(13, true);
             }
             else
             {
@@ -188,7 +188,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 42;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(42, true);
+            EndArray.setEndingArray(14, true);
         }
 
         //22. 바선생약 획득
@@ -248,7 +248,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 31;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(31, true);
+            EndArray.setEndingArray(15, true);
             restaurant_count = 6;
         }
 
@@ -272,7 +272,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 32;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(32, true);
+            EndArray.setEndingArray(16, true);
         }
 
         //2. 버스 기다리는 엔딩 + 입력: update()함수, bool 변수 bus
@@ -287,7 +287,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 3;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(3, true);
+            EndArray.setEndingArray(17, true);
         }
         
         else if(collision.gameObject.name == "Stone"){
@@ -295,7 +295,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 2;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(2, true);
+            EndArray.setEndingArray(18, true);
         }
 
         //4. 라옥화 엔딩 
@@ -304,7 +304,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 12;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(12, true);
+            EndArray.setEndingArray(19, true);
         }
 
         //5, 만원엘베 - (10000원 아이템 있으면 통과, 없으면 가져오라고..) , bool 변수 elev
@@ -373,7 +373,7 @@ public class Ending_School : MonoBehaviour
                 ChangeImage.EndingNumber = 16;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(16, true);
+                EndArray.setEndingArray(20, true);
             }
             else{
                 manager.talkText.text = "킥보드가 있으면 효창공원에서 더 재밌게 놀 수 있을 텐데..";
@@ -406,7 +406,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 28;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(28, true);
+            EndArray.setEndingArray(21, true);
         }
 
         //21, 상자 - 팀플러 엔딩
@@ -415,7 +415,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 13;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(13, true);
+            EndArray.setEndingArray(22, true);
         }
 
         //22. 상자 - 바선생약
@@ -432,7 +432,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 24;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(24, true);
+            EndArray.setEndingArray(23, true);
         }
 
         //25. 벚꽃 구경하다가 지각 ●
@@ -441,7 +441,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 25;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(25, true);
+            EndArray.setEndingArray(24, true);
         }
 
         //26. 버블티 가게 엔딩
@@ -457,7 +457,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 15;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(15, true);
+            EndArray.setEndingArray(25, true);
         }
         
         //28. 학교 앞 음식점 5개 이상 살펴보면 배불러서 지각(마시바시, 신내떡, 선다래, 또와또, 떡집)
@@ -493,7 +493,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 17;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(17, true);
+            EndArray.setEndingArray(26, true);
         }
 
         //class enter 할건지 말건지 물어보는 - Classentercollider
@@ -606,7 +606,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 8;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(8, true);
+            EndArray.setEndingArray(27, true);
         }
 
 
@@ -616,7 +616,7 @@ public class Ending_School : MonoBehaviour
             ChangeImage.EndingNumber = 18;
             ChangeImage.Change();
             EndingScene();
-            EndArray.setEndingArray(18, true);
+            EndArray.setEndingArray(28, true);
         }
 
 
