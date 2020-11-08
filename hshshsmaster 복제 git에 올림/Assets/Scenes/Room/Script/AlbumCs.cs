@@ -6,14 +6,38 @@ using UnityEngine.UI;
 public class AlbumCs : MonoBehaviour
 {
     public Button[] btns = new Button[50];
+    public Sprite[] pictures = new Sprite[24];
+    public GameObject img;
+    void Awake(){
+        for(int i =1; i<=24; i++){
+            btns[i].GetComponentInChildren<Text>().text = i.ToString();
+            //엔딩 봤는지 검사
+            if (EndArray.getEndingArray(i))
+                btns[i].interactable = true;
+            else
+            {
+                btns[i].interactable = false;
+            }
+        }
+    }
+    public void albumButton(Button mybtn){
+        string numS = mybtn.GetComponentInChildren<Text>().text;
+        int num = int.Parse(numS);
+
+        img.SetActive(true);
+        img.GetComponent<Image>().sprite = pictures[num];
+        //Debug.Log(num);
+    }
+
+
     //public Image btnImg;
 
-    public GameObject parent;
-    public Button btnPrefab;
-    void Awake()
+    //public GameObject parent;
+    //public Button btnPrefab;
+    /*void Awake()
     {
         //버튼 초기화
-        for (int i=1; i<50;i++)
+        for (int i=1; i<=24;i++)
         {
             //버튼 생성
             btns[i] = Instantiate(btnPrefab);
@@ -28,5 +52,6 @@ public class AlbumCs : MonoBehaviour
                 btns[i].interactable = false;
             }
         }
-    }
+        btns[1].interactable = true;
+    }*/
 }

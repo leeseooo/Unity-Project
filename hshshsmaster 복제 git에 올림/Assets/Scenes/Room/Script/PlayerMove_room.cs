@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove_room : MonoBehaviour
 {
-    public GameObject NightPanel;
-    private bool isNight = false;
+    //public GameObject NightPanel;
+    //private bool isNight = false;
     public float jumpPower;
     public float maxSpeed;//속력 상한값 설정
     Rigidbody2D rigid;
@@ -16,7 +17,7 @@ public class PlayerMove_room : MonoBehaviour
     private bool isOnbed;
     private bool isSleeping;
     float timer = 0f;
-    float timer2 = 0f;
+    //float timer2 = 0f;
     GameObject scanObject;
     public GameManager manager;
     public GameObject frame;
@@ -30,13 +31,13 @@ public class PlayerMove_room : MonoBehaviour
     Collider2D[] cArray = new Collider2D[3];
     public GameObject[] gArray = new GameObject[3];
 
-    void Start()
+    /*void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
         if (Random.Range(1, 5) == 1)
         {
             isNight = true;
-        }
+        } 
         NightPanel.SetActive(isNight);
         for (int i = 0; i < 3; i++)
         {
@@ -44,7 +45,7 @@ public class PlayerMove_room : MonoBehaviour
             cArray[i].enabled = !isNight;
             //Debug.Log(i + "getCollider");
         }
-    }
+    }*/
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -71,7 +72,8 @@ public class PlayerMove_room : MonoBehaviour
                     ChangeImage.EndingNumber = 4;
                     ChangeImage.Change();
                     EndingScene_room();
-                    EndArray.setEndingArray(4, true);
+                    EndArray.setEndingArray(3, true);
+                    EndArray.roomCnt++;
                 }
             }
         }
@@ -90,15 +92,17 @@ public class PlayerMove_room : MonoBehaviour
             anim.SetBool("isWalking", true);
 
         timer += Time.deltaTime;
-        if (isNight && timer > 5)
+        /*if (isNight && timer > 5)
         {
             //포탈 사용 X
             manager.talkText.text = "앗 저녁이라니 !! 늦잠을 자버렸다~!!";
             ChangeImage.EndingNumber = 11;
             ChangeImage.Change();
-            EndingScene_room();
-            EndArray.setEndingArray(11, true);
-        }
+            EndArray.setEndingArray(4, true);
+            SceneManager.LoadScene("Room");
+            //EndingScene_room();
+            //EndArray.roomCnt++;
+        }*/
     }
     void FixedUpdate()
     {
@@ -111,9 +115,10 @@ public class PlayerMove_room : MonoBehaviour
             rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
         else if (rigid.velocity.x < maxSpeed * (-1)) //Left Max Speed
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);//y축을 0으로 잡으면 공중에 안뜸
-        else
+
+        /*else//sleep getlayermask 있던 부분...
             timer2 = 0f;
-        Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));
+        Debug.DrawRay(rigid.position, Vector3.down * (1), new Color(0, 1, 0));*/
         
         //Landing Platform
 
@@ -175,7 +180,8 @@ public class PlayerMove_room : MonoBehaviour
             ChangeImage.Change();
             manager.talkText.text = "꼰대 화석 선배를 만나 몸과 마음이 피폐해졌다..!";
             EndingScene();
-            EndArray.setEndingArray(7, true);
+            EndArray.setEndingArray(6, true);
+            EndArray.subCnt++;
         }
         else if (other.gameObject.name == "bedCheck") {
             manager.talkText.text = "점프하고 싶은 침대야. z키를 꾹 누르고 있으면 잘 수 있겠어.";
@@ -192,7 +198,7 @@ public class PlayerMove_room : MonoBehaviour
                 ChangeImage.EndingNumber = 10;
                 ChangeImage.Change();
                 EndingScene_room();
-                EndArray.setEndingArray(10, true);
+                EndArray.roomCnt++;
                 anim.SetBool("isSleeping", false);
             }
         }
@@ -206,7 +212,8 @@ public class PlayerMove_room : MonoBehaviour
             ChangeImage.Change();
             manager.talkText.text = "사람이 너무 많은 곳으로 내리려다... 인파에 파묻혔다!!";
             EndingScene();
-            EndArray.setEndingArray(6, true);
+            EndArray.setEndingArray(5, true);
+            EndArray.subCnt++;
         }
         else if (other.gameObject.name == "midCollider")
         {
@@ -224,6 +231,7 @@ public class PlayerMove_room : MonoBehaviour
             ChangeImage.Change();
             EndingScene_room();
             EndArray.setEndingArray(1, true);
+            EndArray.roomCnt++;
         }
         else if (other.gameObject.name == "chairTalk2")
         {
@@ -239,7 +247,8 @@ public class PlayerMove_room : MonoBehaviour
                     ChangeImage.EndingNumber = 5;
                     ChangeImage.Change();
                     EndingScene();
-                    EndArray.setEndingArray(5, true);
+                    EndArray.setEndingArray(7, true);
+                    EndArray.subCnt++;
                 }
             }
         }
@@ -258,7 +267,8 @@ public class PlayerMove_room : MonoBehaviour
                 ChangeImage.EndingNumber = 5;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(5, true);
+                EndArray.setEndingArray(7, true);
+                EndArray.subCnt++;
             }
         }
         else if (Input.GetKey(KeyCode.DownArrow)&& other.gameObject.name == "chairCollider")
@@ -272,7 +282,8 @@ public class PlayerMove_room : MonoBehaviour
                 ChangeImage.EndingNumber = 5;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(5, true);
+                EndArray.setEndingArray(7, true);
+                EndArray.subCnt++;
             }
         }
     }

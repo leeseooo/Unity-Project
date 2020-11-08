@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
         invenPanel.SetActive(activeInven);
 
         location = EndArray.location;
-        location = 1;
         switch (location)
         {
             case 0: //초기위치
@@ -46,6 +45,7 @@ public class UIManager : MonoBehaviour
                 ChangeImage.Change();
                 EndingScene();
                 EndArray.setEndingArray(26, true);
+                EndArray.schoolCnt++;
                 break;
             case 2: //교수님.
                 player.gameObject.transform.Translate(5.5f, 70.0f, 0f);
@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        EndingText.text = "엔딩 수 : " + EndArray.schoolCnt + "/20"; //학교 엔딩 숫자로 조정.
+        EndingText.text = "엔딩 수 : " + EndArray.getCnt() + "/20"; //학교 엔딩 숫자로 조정.
     }
     public void clickedBackButton()
     {

@@ -8,6 +8,9 @@ public class ButtonSc : MonoBehaviour
     public GameObject AlbumPanel;
     public GameObject creditPanel;
     public GameObject HowtoPanel;
+
+    public GameObject AlbumImg;
+
     bool activeAlbum = false;
     bool activeCredit = false;
     bool activeHowto = false;
@@ -62,6 +65,8 @@ public class ButtonSc : MonoBehaviour
     public void ClickedBack()
     {
         audio_start.Play();
+        if(true)
+            AlbumImg.SetActive(false);
         if (activeAlbum)
             OnAlbumButton();
         else if (activeCredit)

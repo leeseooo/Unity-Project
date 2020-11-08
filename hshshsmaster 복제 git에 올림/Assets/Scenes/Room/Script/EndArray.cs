@@ -17,4 +17,25 @@ public static class EndArray
     {
         return EndingArray[i];
     }
+    public static int getRoomCnt(){
+        int sum =0;
+        for(int i=1; i<=4; i++)
+            if(EndingArray[i])
+                sum++;
+        return sum;
+    }
+    public static int getSubCnt(){
+        int cnt =0;
+        for(int i=5;i<=7;i++)
+            if(EndingArray[i])
+                cnt++;
+        return cnt;
+    }
+    public static int getCnt(){
+        int cnt =0;
+        for(int i=8;i<=24;i++)
+            if(EndingArray[i])
+                cnt++;
+        return cnt;
+    }
 }

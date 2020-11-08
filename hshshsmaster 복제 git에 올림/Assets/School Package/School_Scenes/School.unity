@@ -721,7 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90403c74f2e41d74fb71945b0c36359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NightPanel: {fileID: 0}
   jumpPower: 10
   maxSpeed: 5
   manager: {fileID: 656057572}
@@ -90343,8 +90342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 57.5, y: 65}
-  m_SizeDelta: {x: -165, y: -210}
+  m_AnchoredPosition: {x: 105, y: 105}
+  m_SizeDelta: {x: -290, y: -290}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465948822
 MonoBehaviour:
@@ -90693,7 +90692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1538833687}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1966926177}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: clickedBackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1538833687
 MonoBehaviour:
   m_ObjectHideFlags: 0

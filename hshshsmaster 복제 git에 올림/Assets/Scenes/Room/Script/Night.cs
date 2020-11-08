@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Night : MonoBehaviour
 {
@@ -18,12 +19,12 @@ public class Night : MonoBehaviour
     void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        if (Random.Range(1, 2) == 1)
+        if (Random.Range(1, 5) == 1)
         {
             isNight = true;
         }
         NightPanel.SetActive(isNight);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             cArray[i] = gArray[i].GetComponent<Collider2D>();
             cArray[i].enabled = !isNight;
@@ -40,8 +41,10 @@ public class Night : MonoBehaviour
             manager.talkText.text = "앗 저녁이라니 !! 늦잠을 자버렸다~!!";
             ChangeImage.EndingNumber = 11;
             ChangeImage.Change();
+            EndArray.setEndingArray(4, true);
             EndingScene_room();
-            EndArray.setEndingArray(11, true);
+            SceneManager.LoadScene("Room");
+            //EndArray.roomCnt++;
         }
     }
     public void EndingScene_room()
