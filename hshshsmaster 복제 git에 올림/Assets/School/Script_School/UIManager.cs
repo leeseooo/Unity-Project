@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
-        EndingText.text = "엔딩 수 : " + EndArray.schoolCnt + "/20"; //학교 엔딩 숫자로 조정.
+        EndingText.text = "엔딩 수 : " + EndArray.schoolCnt + "/24"; //학교 엔딩 숫자로 조정. (8~31까지 총 24개)
         invenPanel.SetActive(activeInven);
 
         location = EndArray.location;
@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        EndingText.text = "엔딩 수 : " + EndArray.getCnt() + "/20"; //학교 엔딩 숫자로 조정.
+        EndingText.text = "엔딩 수 : " + EndArray.getCnt() + "/24"; //학교 엔딩 숫자로 조정.
     }
     public void clickedBackButton()
     {

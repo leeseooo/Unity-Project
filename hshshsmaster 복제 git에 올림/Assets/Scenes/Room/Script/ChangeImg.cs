@@ -114,5 +114,9 @@ public class ChangeImg : MonoBehaviour
             gameObject.GetComponent<Image>().sprite = 스숙오류;
         else if (EndingNumber == 43)
             gameObject.GetComponent<Image>().sprite = 배탈;
+        else if (EndingNumber == 44)
+            gameObject.GetComponent<Image>().sprite = 사다리;
+        else if (EndingNumber == 45)
+            gameObject.GetComponent<Image>().sprite = 부자;
     }
 }

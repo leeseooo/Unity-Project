@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class School_PlayerMove : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class School_PlayerMove : MonoBehaviour
     public float ending_laddertime = 0; //사다리 30초 엔딩
     bool breadbox, coinbox; //대학가 빵상자, 코인상자 open
 
+    public GameObject frame;
+    public Fadein Fade;
+    public ChangeImg ChangeImage;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -36,6 +41,18 @@ public class School_PlayerMove : MonoBehaviour
         audio = GetComponent<AudioSource>();
 
     }
+
+
+
+//엔딩 화면 코드
+    void EndingScene()
+    {
+        manager.Img();
+        audio.clip = clip[2];
+        //audio.Play();
+        Fade.fade.gameObject.SetActive(false);
+    }
+
     void Update()
     {
         //Jump
@@ -83,7 +100,11 @@ public class School_PlayerMove : MonoBehaviour
         if(count_bread == 10)
         {
             manager.talkText.text = "등교길에 빵 10개를 먹는 것은 급성 배탈을 유발한다. 이대로라면 수업 중에 빵귀를 10번 뀔 것이다. 어쩔 수 없이 병원을 가야겠다.!";
-
+            ChangeImage.EndingNumber = 43;
+            ChangeImage.Change();
+            EndingScene();
+            
+            EndArray.setEndingArray(29, true);
         }
 
         //29.사다리 시간 엔딩
@@ -92,6 +113,11 @@ public class School_PlayerMove : MonoBehaviour
             
             if(ending_laddertime >= 30){
                 manager.talkText.text = "사다리에 매달려있다가 힘이 모두 빠져버렸다! 눈송은 힘이빠져 제시간에 학교에 가지 못했다!";
+                ChangeImage.EndingNumber = 44;
+                ChangeImage.Change();
+                EndingScene();
+                EndArray.setEndingArray(30, true);
+           
             }
             if(!isLadder){
                 ending_laddertime = 0; //사다리에서 떨어지면 초기화
@@ -178,8 +204,12 @@ public class School_PlayerMove : MonoBehaviour
             //10. 부자엔딩
             if(count_coin >= 15 && !ending_coin)
             {
-                manager.talkText.text = "엔딩)[눈송]은 부자가 되었다! 이제 학교에 다니지 않을것이다! 자퇴!";
+                manager.talkText.text = "[눈송]은 부자가 되었다! 이제 학교에 다니지 않을것이다! 자퇴!";
                 ending_coin = true;
+                ChangeImage.EndingNumber = 45;
+                ChangeImage.Change();
+                EndingScene();
+                EndArray.setEndingArray(31, true);
             }
         }
         if(other.gameObject.tag == "Bread"){
