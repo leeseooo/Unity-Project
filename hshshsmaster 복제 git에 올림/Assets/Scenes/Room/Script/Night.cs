@@ -19,7 +19,7 @@ public class Night : MonoBehaviour
     void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        if (Random.Range(1, 5) == 1)
+        if (Random.Range(1, 4) == 1)
         {
             isNight = true;
         }
@@ -43,7 +43,7 @@ public class Night : MonoBehaviour
             ChangeImage.Change();
             EndArray.setEndingArray(4, true);
             EndingScene_room();
-            SceneManager.LoadScene("Room");
+            Invoke("reloadScean",4);
             //EndArray.roomCnt++;
         }
     }
@@ -52,5 +52,9 @@ public class Night : MonoBehaviour
         manager.Img();
         transform.position = new Vector3(-1, 0, 0);
         Fade.fade.gameObject.SetActive(false);
+    }
+
+    public void reloadScean(){
+        SceneManager.LoadScene("Room");
     }
 }

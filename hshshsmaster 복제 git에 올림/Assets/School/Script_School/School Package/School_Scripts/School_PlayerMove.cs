@@ -62,9 +62,6 @@ public class School_PlayerMove : MonoBehaviour
             anim.SetBool("isJumping", true);
             audio.clip = clip[1];
             audio.Play();
-            
-            
-            
         }
         //Stop Speed
         if (manager.isAction ? false : Input.GetButtonUp("Horizontal"))
@@ -99,7 +96,7 @@ public class School_PlayerMove : MonoBehaviour
         //12, 빵엔딩
         if(count_bread == 10)
         {
-            manager.talkText.text = "등교길에 빵 10개를 먹는 것은 급성 배탈을 유발한다. 이대로라면 수업 중에 빵귀를 10번 뀔 것이다. 어쩔 수 없이 병원을 가야겠다.!";
+            manager.talkText.text = "빵을 너무 많이 먹었나봐... 식곤증때문에 오늘은 자휴다!";
             count_bread = 20;
             ChangeImage.EndingNumber = 43;
             ChangeImage.Change();
@@ -118,9 +115,6 @@ public class School_PlayerMove : MonoBehaviour
                 ChangeImage.Change();
                 EndingScene();
                 EndArray.setEndingArray(30, true);
-                
-
-           
             }
             if(!isLadder){
                 ending_laddertime = 0; //사다리에서 떨어지면 초기화
@@ -227,9 +221,7 @@ public class School_PlayerMove : MonoBehaviour
             // Deactive item
             other.gameObject.SetActive(false);
 
-            
-
-
+        
         }
         else if(other.gameObject.tag == "Box_Bread"){
             breadbox = true;

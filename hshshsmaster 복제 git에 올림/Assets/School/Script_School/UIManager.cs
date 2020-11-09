@@ -34,7 +34,6 @@ public class UIManager : MonoBehaviour
         {
             case 0: //초기위치
                 player.gameObject.transform.Translate(1.5f, 0.0f, 0f);
-                location++;
                 break;
             case 1: //버블티
                 player.gameObject.transform.Translate(28.0f, 35.0f, 0f);
@@ -43,7 +42,7 @@ public class UIManager : MonoBehaviour
                 ChangeImage.EndingNumber = 26;
                 ChangeImage.Change();
                 EndingScene();
-                EndArray.setEndingArray(26, true);
+                EndArray.setEndingArray(32, true);
                 EndArray.schoolCnt++;
                 break;
             case 2: //교수님.

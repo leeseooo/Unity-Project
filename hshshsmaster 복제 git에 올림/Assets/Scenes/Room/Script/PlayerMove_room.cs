@@ -15,7 +15,7 @@ public class PlayerMove_room : MonoBehaviour
     Animator anim;
     private int jumpCheck;
     private bool isOnbed;
-    private bool isSleeping;
+    //private bool isSleeping;
     float timer = 0f;
     //float timer2 = 0f;
     GameObject scanObject;
@@ -139,6 +139,8 @@ public class PlayerMove_room : MonoBehaviour
         {
             isOnbed = false;
             jumpCheck = 0;
+            timer=0;
+            anim.SetBool("isSleeping",false);
         }
     }
     void OnTriggerStay2D(Collider2D other)

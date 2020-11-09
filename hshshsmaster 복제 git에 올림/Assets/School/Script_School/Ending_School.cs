@@ -51,6 +51,7 @@ public class Ending_School : MonoBehaviour
         //2. 버스 엔딩 입력
         if (bus && Input.GetKeyDown(KeyCode.Z))
         {
+            Random.InitState(System.DateTime.Now.Millisecond);
             random = Random.Range(0, 100);
             if (random == 0)
             {
@@ -211,6 +212,7 @@ public class Ending_School : MonoBehaviour
         else if (bubbletea && Input.GetKeyDown(KeyCode.Z))
         {
             mini_2.SetActive(false);
+            EndArray.location = 1;
             //씬전환 - 미니게임
             SceneManager.LoadScene("BubbleTea");
             bubbletea = false;
@@ -449,6 +451,7 @@ public class Ending_School : MonoBehaviour
             mini_2.SetActive(true);
             manager.talkText.text = "카페에 들어가려면 z키를 누르세요.";
             bubbletea = true;
+            EndArray.location = 1;
         }
 
         //27. 교통사고 신호등 엔딩
