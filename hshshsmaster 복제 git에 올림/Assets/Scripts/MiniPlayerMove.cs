@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MiniPlayerMove : MonoBehaviour
 {
@@ -89,6 +90,8 @@ public class MiniPlayerMove : MonoBehaviour
             movespeed = 0f;
             Debug.Log("게임 종료화면, 학생 승");
             Teacher.SetActive(false); //교수 사라지기
+            SceneManager.LoadScene("School");
+
         }
     }
 
