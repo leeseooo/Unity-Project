@@ -225,7 +225,7 @@ public class Ending_School : MonoBehaviour
             manager.talkText.text = "이곳은 시금치 파스타가 맛있는 바시마시!";
             restaurant_1 = false;
         }
-        else if (restaurant_2 && Input.GetKeyDown(KeyCode.Z))
+        else if (restaurant_2  && Input.GetKeyDown(KeyCode.Z))
         {
             restaurant_count++;
             manager.talkText.text = "와우세트 먹고 가자 !";
@@ -237,7 +237,7 @@ public class Ending_School : MonoBehaviour
             manager.talkText.text = "오늘도 사람이 많군!";
             restaurant_3 = false;
         }
-        else if (restaurant_4 && Input.GetKeyDown(KeyCode.Z))
+        else if (restaurant_4  && Input.GetKeyDown(KeyCode.Z))
         {
             restaurant_count++;
             manager.talkText.text = "콩불먹고 볶음밥까지 먹어줘야 진정한 또가또!";
