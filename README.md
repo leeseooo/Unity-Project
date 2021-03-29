@@ -1,7 +1,10 @@
 # 학교갈수있을까?
 Apps Unity game project🎮
+
 https://www.youtube.com/watch?v=28qM1WwLsRo&t=174s => 0:00 ~ 1:37
+
 💻Team 숙명여대 컴과최강팀
+
 
 ■게임 소개
 눈송은 방에서 일어나 지하철을 타고 대학가를 지나 학교에 가야한다... 하지만 눈앞에 펼쳐진 등교를 방해하는 수많은 장애물들! 
